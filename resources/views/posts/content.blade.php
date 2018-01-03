@@ -9,6 +9,7 @@
               </h2>
 
               {{ $post->body }}<br>
+             
               {{ $post->created_at->toFormattedDateString() }}
             
             </div>

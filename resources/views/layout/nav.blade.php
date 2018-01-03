@@ -21,7 +21,9 @@
             <div class="dropdown-menu" aria-labelledby="dropdown01">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              @if(Auth::check())
+              <a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
+              @endif
             </div>
           </li>
         </ul>

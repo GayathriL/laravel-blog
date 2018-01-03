@@ -14,18 +14,35 @@ Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/homepage', 'indexcontroller@viewhomepage');
 
-Route::get('/','PostsController@index');
 
+//storing datas into database
+
+Route::get('/','PostsController@index');
 
 Route::get('/posts/create','PostsController@create');
 
 Route::get('/posts/{post}','PostsController@show');
 
-
 Route::post('/posts','PostsController@store');
 
 Route::post('/posts/{post}/comments','CommentsController@addcomment');
 
+//Auth
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Associating with users
+
+Route::get('/register','RegistrationController@register');
+
+Route::post('/register','RegistrationController@store');
+
+Route::get('/login','SessionController@register');
+
+Route::post('/login','SessionController@store');
+
+Route::get('/logout','SessionController@logout');
+
+
