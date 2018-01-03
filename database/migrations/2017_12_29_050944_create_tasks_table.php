@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFruitsTable extends Migration
+class CreateTasksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class CreateFruitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fruits', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('body');
+            $table->boolean('isComplete')->default(true);
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ class CreateFruitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fruits');
+        Schema::dropIfExists('tasks');
     }
 }

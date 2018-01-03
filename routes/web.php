@@ -1,46 +1,31 @@
 <?php
 
-use App\fruits;
+Route::get('/fruits','FruitsController@index');
 
-Route::get('/fruits', function () {
-    //return view('welcome')->with('name',"gayathri");
-    //$name = 'Gayathri';
-    //$age = 21;
+Route::get('/fruits/{fruit}','FruitsController@show');
 
-    //return view('welcome',['name'=> $name]);
+Route::get('/tasks','TasksController@index');
 
-    //return view('welcome',compact('name','age'));
+Route::get('/tasks/{task}','TasksController@show');
 
-    //$fruits=["apple","orange","pineapple","banana"];
-
-       //$fruits=DB::table('fruits')->latest()->get();
-
-       $fruits=fruits::all();
-
-       return view('index',compact('fruits'));
-
-
-});
-
-Route::get('/fruits/{fruit}',function ($fruit_id){
-
-
-   $fruit=DB::table('fruits')->find($fruit_id);
-
-   dd($fruit);
-
-   //$fruit=App\fruits::find($fruit_id);
-
-   return view('show',compact('fruit'));
-
-});
-
-
-Route::get('/compassite', function () {
-    return view('compassite');
-});
-
+Route::get('/compassite','HomeController@welcome');
 
 Route::get('/dashboard', 'HomeController@index');
 
 Route::get('/homepage', 'indexcontroller@viewhomepage');
+
+Route::get('/','PostsController@index');
+
+
+Route::get('/posts/create','PostsController@create');
+
+Route::get('/posts/{post}','PostsController@show');
+
+
+Route::post('/posts','PostsController@store');
+
+Route::post('/posts/{post}/comments','CommentsController@addcomment');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
